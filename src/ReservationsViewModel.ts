@@ -5,7 +5,7 @@ import Meal from './IMeal';
 export default class ReservationsViewModel {
     availableMeals: Array<Meal>
     seats: KnockoutObservableArray<SeatReservation>
-    totalSurcharge: KnockoutComputed<number>
+    totalSurcharge: KnockoutComputedFunctions<number>
 
     constructor () {
         this.availableMeals = [

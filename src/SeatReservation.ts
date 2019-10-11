@@ -4,7 +4,7 @@ import Meal from './IMeal';
 export default class SeatReservation {
     name: string
     meal: KnockoutObservable<Meal>   
-    formattedPrice: KnockoutComputed<string>
+    formattedPrice: KnockoutComputedFunctions<string>
 
     constructor (name: string, initialMeal: Meal) {
         this.name = name;
