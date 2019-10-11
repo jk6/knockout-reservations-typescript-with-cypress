@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Knockout Reservations</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+	<div id="root">
+		<div class="jumbotron">
+			<h2>Your seat reservations 
+				<!-- ko if: seats().length > 0 -->
+				( <span data-bind="text: seats().length"></span> )
+				<!-- /ko -->
+			</h2>
+		</div>	
+		<div class="container">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th>
+					</tr>
+				</thead>
+				<!-- Todo: Generate table body -->
+				<tbody data-bind="foreach: seats">
+				<tr>
+					<td><input class="form-control" data-bind="value: name" /></td>
+					<td>
+						<select class="form-control" data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select>						
+					</td>
+					<td data-bind="text: formattedPrice"></td>
+					<td><button class="btn btn-outline btn-danger" data-bind="click: $root.removeSeat">Remove</button></td>
+				</tr>
+				</tbody>
+			</table>
+			
+			<hr />
+			<button class="btn btn-success" id="addReservation" data-bind="click: addSeat">Reserve another seat</button>
+			
+			<br />
+			<h3 data-bind="visible: totalSurcharge() > 0">
+				Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+			</h3>
+		</div>
+	</div>
+	<!-- <script source src="node_modules/bootstrap/dist/js/bootstrap.js"></script> -->
+	<!-- <script src="dist/vendor.bundle.js"></script> -->
+	<script src="dist/bundle.js"></script>
+</body>
+</html>
