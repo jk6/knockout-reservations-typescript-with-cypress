@@ -1,12 +1,12 @@
 import * as ko from 'knockout';
-import Meal from './IMeal';
+import IMeal from './IMeal';
 
 export default class SeatReservation {
-    name: string
-    meal: KnockoutObservable<Meal>   
-    formattedPrice: KnockoutComputedFunctions<string>
+    name: string;
+    meal: KnockoutObservable<IMeal>;
+    formattedPrice: KnockoutComputedFunctions<string>;
 
-    constructor (name: string, initialMeal: Meal) {
+    constructor (name: string, initialMeal: IMeal) {
         this.name = name;
         this.meal = ko.observable(initialMeal);
 
