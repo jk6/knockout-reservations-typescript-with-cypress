@@ -22,7 +22,7 @@
   "dependencies": {
     "@types/knockout": "^3.4.47",
     "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "knockout": "^3.4.2"
   }
 }
