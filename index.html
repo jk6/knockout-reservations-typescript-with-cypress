@@ -29,7 +29,7 @@
 						<select class="form-control" data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select>						
 					</td>
 					<td data-bind="text: formattedPrice"></td>
-					<td><button class="btn btn-outline btn-danger" data-bind="click: $root.removeSeat">Remove</button></td>
+					<td><button class="btn btn-outline btn-danger" id="removeReservation" data-bind="click: $root.removeSeat">Remove</button></td>
 				</tr>
 				</tbody>
 			</table>
@@ -43,8 +43,6 @@
 			</h3>
 		</div>
 	</div>
-	<!-- <script source src="node_modules/bootstrap/dist/js/bootstrap.js"></script> -->
-	<!-- <script src="dist/vendor.bundle.js"></script> -->
 	<script src="dist/bundle.js"></script>
 </body>
 </html>
