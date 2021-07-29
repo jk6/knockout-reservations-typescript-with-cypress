@@ -6,4 +6,4 @@ Getting Started:
 
 Clone the repo and run npm install.
 
-Then run npm run build (only necessary the first time you run the application).
+Then run: npm run build (only necessary the first time you run the application).
