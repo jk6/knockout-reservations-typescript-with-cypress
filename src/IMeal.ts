@@ -1,4 +1,4 @@
 export default interface IMeal {
-    mealName: string;
-    price: number
+  mealName: string;
+  price: number;
 }

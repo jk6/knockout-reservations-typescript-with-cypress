@@ -1,45 +1,46 @@
-import * as ko from 'knockout';
-import SeatReservation from './SeatReservation';
-import IMeal from './IMeal';
+import * as ko from "knockout";
+import SeatReservation from "./SeatReservation";
+import IMeal from "./IMeal";
 
 export default class ReservationsViewModel {
-    availableMeals: Array<IMeal>;
-    seats: KnockoutObservableArray<SeatReservation>;
-    totalSurcharge: KnockoutComputedFunctions<number>;
+  availableMeals: Array<IMeal>;
+  seats: KnockoutObservableArray<SeatReservation>;
+  totalSurcharge: KnockoutComputedFunctions<number>;
 
-    constructor () {
-        this.availableMeals = [
-            { mealName: "Standard (sandwich)", price: 0 },
-            { mealName: "Premium (lobster)", price: 34.95 },
-            { mealName: "Ultimate (whole zebra)", price: 290 }
-          ];
+  constructor() {
+    this.availableMeals = [
+      { mealName: "Standard (sandwich)", price: 0 },
+      { mealName: "Premium (lobster)", price: 34.95 },
+      { mealName: "Ultimate (whole zebra)", price: 290 },
+    ];
 
-        this.seats = ko.observableArray<SeatReservation>([
-            new SeatReservation('Steve', this.availableMeals[0]),
-            new SeatReservation('Sally', this.availableMeals[0])
-        ]);
+    this.seats = ko.observableArray<SeatReservation>([
+      new SeatReservation("Steve", this.availableMeals[0]),
+      new SeatReservation("Sally", this.availableMeals[0]),
+    ]);
 
-        this.totalSurcharge = ko.computed(function (): number {
-            let total = 0;
-            
-            this.seats().map((seat: SeatReservation): number => total += seat.meal().price);
+    this.totalSurcharge = ko.computed(function (): number {
+      let total = 0;
 
-            return total;
-        }, this);
+      this.seats().map(
+        (seat: SeatReservation): number => (total += seat.meal().price)
+      );
 
+      return total;
+    }, this);
 
-        this.addSeat = this.addSeat.bind(this);
-        this.removeSeat = this.removeSeat.bind(this);
-        
-        document.getElementById('addReservation').focus();
-    }
+    this.addSeat = this.addSeat.bind(this);
+    this.removeSeat = this.removeSeat.bind(this);
 
-    addSeat (): void {
-        this.seats.push(new SeatReservation("", this.availableMeals[0]));
-    };
+    document.getElementById("addReservation").focus();
+  }
 
-    removeSeat (seat: SeatReservation, e: Event) : void {
-        e.preventDefault();
-        this.seats.remove(seat);
-    }
+  addSeat(): void {
+    this.seats.push(new SeatReservation("", this.availableMeals[0]));
+  }
+
+  removeSeat(seat: SeatReservation, e: Event): void {
+    e.preventDefault();
+    this.seats.remove(seat);
+  }
 }
